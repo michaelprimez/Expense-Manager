@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="categoriesViewModel"
+            type="com.michaelkeskinidis.expensemanager.viewmodel.CategoriesViewModel" />
+        <variable
+            name="inputTransactionViewModel"
+            type="com.michaelkeskinidis.expensemanager.viewmodel.InputTransactionViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.InsertTransactionFragmentMain">
+
+    <ToggleButton
+        android:id="@+id/switchExpenseOrIncome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/tooglebutton_selector"
+        android:padding="8dp"
+        android:text="@string/expense_or_income"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textOff="@string/expense"
+        android:textOn="@string/income"
+        android:textSize="20sp"
+        android:checked="@={inputTransactionViewModel.form.isIncome}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/dark_jungle_gray"
+        android:inputType="text"
+        android:textColor="@color/dark_jungle_gray"
+        android:textSize="14sp"
+        android:hint="@string/select_account"
+        android:theme="@style/TextInputLayoutTextGray"
+        android:text="@={inputTransactionViewModel.form.account}"
+        app:onFocus="@{inputTransactionViewModel.onFocusAccountType}"
+        app:error="@{inputTransactionViewModel.form.accountError}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchExpenseOrIncome" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/category"
+        android:layout_width="343dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/dark_jungle_gray"
+        android:inputType="text"
+        android:textColor="@color/dark_jungle_gray"
+        android:textSize="14sp"
+        android:hint="@string/select_category"
+        android:theme="@style/TextInputLayoutTextGray"
+        android:text="@={inputTransactionViewModel.form.category}"
+        app:onFocus="@{inputTransactionViewModel.onFocusCategoryType}"
+        app:error="@{inputTransactionViewModel.form.categoryError}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/account" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/dark_jungle_gray"
+        android:inputType="numberSigned"
+        android:textColor="@color/dark_jungle_gray"
+        android:textSize="14sp"
+        android:hint="@string/type_amount"
+        android:theme="@style/TextInputLayoutTextGray"
+        android:text="@={inputTransactionViewModel.form.amount}"
+        app:onFocus="@{inputTransactionViewModel.onFocusAmount}"
+        app:error="@{inputTransactionViewModel.form.amountError}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:enabled="@{inputTransactionViewModel.form.valid}"
+        android:text="@string/save"
+        android:onClick="@{ () -> inputTransactionViewModel.form.onClick() }"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

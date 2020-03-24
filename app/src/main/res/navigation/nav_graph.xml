@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/AccountsFragment">
+
+    <fragment
+        android:id="@+id/AccountsFragment"
+        android:name="com.michaelkeskinidis.expensemanager.ui.fragments.AccountsFragmentMain"
+        android:label="@string/accounts"
+        tools:layout="@layout/fragment_accounts">
+
+        <action
+            android:id="@+id/action_AccountsFragment_to_ChartsFragment"
+            app:destination="@id/ChartsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ChartsFragment"
+        android:name="com.michaelkeskinidis.expensemanager.ui.fragments.ChartsFragment"
+        android:label="@string/charts"
+        tools:layout="@layout/fragment_charts">
+
+        <action
+            android:id="@+id/action_ChartsFragment_to_AccountsFragment"
+            app:destination="@id/AccountsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/InsertTransactionFragment"
+        android:name="com.michaelkeskinidis.expensemanager.ui.fragments.InsertTransactionFragmentMain"
+        android:label="@string/insert_transaction"
+        tools:layout="@layout/fragment_insert_transactions">
+
+        <action
+            android:id="@+id/action_to_InsertTransactionFragment"
+            app:destination="@id/InsertTransactionFragment" />
+    </fragment>
+</navigation>

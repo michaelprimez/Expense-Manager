@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196f3</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#f50057</color>
+    <color name="green">#4caf50</color>
+    <color name="bottom_bar">@color/colorPrimary</color>
+    <color name="text_color">#ff212121</color>
+    <color name="orange">#ffc400</color>
+
+    <color name="dark_jungle_gray"> #464545 </color>
+    <color name="outer_space"> #929292 </color>
+</resources>
