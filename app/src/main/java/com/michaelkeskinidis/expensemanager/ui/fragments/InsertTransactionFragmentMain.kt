@@ -11,7 +11,6 @@ import com.michaelkeskinidis.expensemanager.data.db.entities.IncomeCategory
 import com.michaelkeskinidis.expensemanager.data.db.entities.Money
 import com.michaelkeskinidis.expensemanager.data.db.entities.Transaction
 import com.michaelkeskinidis.expensemanager.databinding.FragmentInsertTransactionsBinding
-import com.michaelkeskinidis.expensemanager.ui.base.IOScopedFragment
 import com.michaelkeskinidis.expensemanager.ui.base.MainScopedFragment
 import com.michaelkeskinidis.expensemanager.ui.model.InputTransactionFields
 import com.michaelkeskinidis.expensemanager.utilities.getCurrentLocale
@@ -20,7 +19,6 @@ import com.michaelkeskinidis.expensemanager.viewmodel.CategoriesViewModel
 import com.michaelkeskinidis.expensemanager.viewmodel.InputTransactionViewModel
 import com.michaelkeskinidis.expensemanager.viewmodel.factories.AccountViewModelFactory
 import com.michaelkeskinidis.expensemanager.viewmodel.factories.CategoriesViewModelFactory
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -29,7 +27,7 @@ import org.threeten.bp.OffsetDateTime
 import java.math.BigDecimal
 import java.util.*
 
-class InsertTransactionFragmentMain : IOScopedFragment(), KodeinAware {
+class InsertTransactionFragmentMain : MainScopedFragment(), KodeinAware {
 
     override val kodein by closestKodein()
 

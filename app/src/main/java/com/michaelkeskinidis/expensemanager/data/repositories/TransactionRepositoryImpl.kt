@@ -11,7 +11,9 @@ class TransactionRepositoryImpl(
 ) : TransactionRepository {
 
     override suspend fun saveTransaction(transaction: Transaction) {
-        tranactionDao.upsert(transaction)
+        withContext(Dispatchers.IO) {
+            tranactionDao.upsert(transaction)
+        }
     }
 
     override suspend fun getTransactions(): LiveData<List<Transaction>> {

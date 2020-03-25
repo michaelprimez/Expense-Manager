@@ -18,7 +18,9 @@ class AccountRepositoryImpl(
     }
 
     override suspend fun saveAccount(name: String) {
-        accountDao.upsert(Account(name))
+        withContext(Dispatchers.IO) {
+            accountDao.upsert(Account(name))
+        }
     }
 
     override suspend fun getAccountTransactions(): LiveData<List<AccountTransaction>> {

@@ -14,11 +14,15 @@ class CategoriesRepositoryImpl(
 ) : CategoriesRepository {
 
     override suspend fun saveIncomeCategory(incomeCategory: IncomeCategory) {
-        incomeCategoryDao.upsert(incomeCategory)
+        withContext(Dispatchers.IO) {
+            incomeCategoryDao.upsert(incomeCategory)
+        }
     }
 
     override suspend fun saveExpenceCategory(expenseCategory: ExpenseCategory) {
-        expenseCategoryDao.upsert(expenseCategory)
+        withContext(Dispatchers.IO) {
+            expenseCategoryDao.upsert(expenseCategory)
+        }
     }
 
     override suspend fun getIncomeCategories(): LiveData<List<IncomeCategory>> {
